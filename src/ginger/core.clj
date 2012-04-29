@@ -7,8 +7,7 @@
 
 (defonce m (mcore/connect "/dev/ttyUSB0"))
 
-(definst foo [freq 440] (saw freq))
-
+;; TODO import instruments from ~/.ginger/instruments or some such thing
 (defsynth tb303 [note 60 wave 1
                  cutoff 100 r 0.9
                  attack 0.101 decay 0 sustain 1 release 0.4
