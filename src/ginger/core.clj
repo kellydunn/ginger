@@ -6,6 +6,9 @@
             [overtone.core :as overtone]
             [ginger.instruments :as instruments]))
 
+(ginger.instruments.foobar/foobar)
+(kill ginger.instruments.foobar/foobar)
+
 (defonce m (mcore/connect "/dev/ttyUSB0"))
 
 ;; TODO import instruments from ~/.ginger/instruments or some such thing

@@ -1,5 +1,6 @@
 (ns ginger.instruments
-  (:use [overtone.live]))
+  (:use [overtone.live])
+  (gen-class))
 
 ;; TODO make load path configurable
 (def directory (clojure.java.io/file "/home/kelly/.ginger/instruments"))
