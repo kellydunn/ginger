@@ -3,7 +3,8 @@
   (:require [monome-serial.core :as mcore]
             [monome-serial.led :as mled]
             [monome-serial.event-handlers :as mevent]
-            [overtone.core :as overtone]))
+            [overtone.core :as overtone]
+            [ginger.instruments :as instruments]))
 
 (defonce m (mcore/connect "/dev/ttyUSB0"))
 
