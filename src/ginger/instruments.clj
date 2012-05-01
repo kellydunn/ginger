@@ -4,6 +4,7 @@
 
 ;; TODO make load path configurable
 (def directory (clojure.java.io/file "/home/kelly/.ginger/instruments"))
+
 (def files (file-seq directory))
 
 (def instrument-files
@@ -15,8 +16,3 @@
   (for [^java.io.File instrument-file instrument-files]
     (load-file
      (.getAbsolutePath instrument-file))))
-
-(dissoc load-instrument-files)
-
-(tri-wave)
-(square-wave)

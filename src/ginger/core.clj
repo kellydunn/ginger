@@ -4,14 +4,14 @@
             [monome-serial.led :as mled]
             [monome-serial.event-handlers :as mevent]
             [overtone.core :as overtone]
-            [ginger.instruments :as instruments]))
+            [ginger.instruments]))
 
-(ginger.instruments.foobar/foobar)
-(kill ginger.instruments.foobar/foobar)
-
+(defonce instruments ginger.instruments/load-instrument-files)
 (defonce m (mcore/connect "/dev/ttyUSB0"))
 
-;; TODO import instruments from ~/.ginger/instruments or some such thing
+;; TODO load first instrument to monome
+;; TODO allow users to switch between instruments
+
 (defsynth tb303 [note 60 wave 1
                  cutoff 100 r 0.9
                  attack 0.101 decay 0 sustain 1 release 0.4
@@ -29,7 +29,7 @@
 
 (defn play-note [m x y]
   (mled/led-on m x y)
-  (tb303 :note (+ (* x 20) 10)))
+  (tb303 :note (+ (+ (* x 1) (* y 8)) 20)))
 
 (defn kill-note [m x y]
   (mled/led-off m x y)
