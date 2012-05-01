@@ -34,6 +34,8 @@ mkdir -p ~/.ginger/instruments
 
 Now you can start adding in `.clj` files that describe overtone insturments / synths in this directory.
 
+The current source code assumes that you have a `beep.clj` instrument defined in this configuration directory.
+
 # usage
 
 - boot up swank-server ala slime in an emacs buffer: `M-x clojure-jack-in <RET>`
