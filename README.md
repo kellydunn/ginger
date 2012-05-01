@@ -16,7 +16,7 @@ A monome synthesizer using overtone + the clojure monome-serial library.
 
 # why
 
-I wannt to be able to download overtone instruments and apply them directly to my monome / have the ability to change them on the fly.
+I want to be able to download overtone instruments and apply them directly to my monome / have the ability to change them on the fly.
 
 # install
 
