@@ -5,4 +5,4 @@
                  [polynome "0.3-SNAPSHOT"]
                  [overtone "0.6.0"]]
   :dev-dependencies [[swank-clojure "1.4.0"]]
-  :extra-classpath-dirs ["/home/kelly/.ginger"])
+  :extra-classpath-dirs ["/home/kelly/.ginger/instruments"])
