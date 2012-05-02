@@ -10,14 +10,13 @@
 (defonce instruments ginger.instruments/load-instrument-files)
 (defonce m (mcore/connect "/dev/ttyUSB0"))
 
-(intern 'ginger.core 'instrument-index 1)
+(intern 'ginger.core 'instrument-index 0)
 (dissoc instruments)
 
 ;; TODO allow users to switch between instruments
 (def current-instrument
   (nth instruments instrument-index))
 
-;; TODO allow notes to play scales defined by the instrument
 (defn play-note [m x y]
   (mled/led-on m x y)
   (current-instrument :note (+ (+ (* x 1) (* y 8)) 20)))
@@ -26,5 +25,14 @@
   (mled/led-off m x y)
   (kill current-instrument))
 
-(mevent/on-press m (fn [x y] (play-note m x y)) "*")
-(mevent/on-release m (fn [x y] (kill-note m x y)) "*")
+(defn delegate-on-press [m x y]
+  (when (> y 0)
+    (play-note m x y)))
+
+(defn delegate-on-release [m x y]
+  (when (> y 0)
+    (kill-note m x y)))
+
+;; TODO allow notes to play scales defined by the instrument
+(mevent/on-press m (fn [x y] (delegate-on-press m x y)) "*")
+(mevent/on-release m (fn [x y] (delegate-on-release m x y)) "*")
