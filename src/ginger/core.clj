@@ -25,7 +25,7 @@
   (when (> y 0)
     (play-note m x y))
   (when (= y 0)
-    (controls/switch-instrument-index m x y)))
+    (controls/handle-press-event m x y)))
 
 (defn delegate-on-release [m x y]
   (when (> y 0)
@@ -33,6 +33,3 @@
 
 (mevent/on-press m (fn [x y] (delegate-on-press m x y)) "*")
 (mevent/on-release m (fn [x y] (delegate-on-release m x y)) "*")
-
-(bass)
-(kill bass)
