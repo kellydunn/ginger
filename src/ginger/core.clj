@@ -15,11 +15,11 @@
 
 (defn play-note [m x y]
   (mled/led-on m x y)
-  ((controls/get-instrument (deref controls/current-index)) :note (+ (+ (* x 1) (* y 8)) 25)))
+  ((controls/get-instrument (deref controls/current-index)) :note (+ (+ (* x 1) (* y 8)) 10)))
 
 (defn kill-note [m x y]
   (mled/led-off m x y)
-  (kill (controls/get-instrument (deref controls/current-index))))
+  (stop))
 
 (defn delegate-on-press [m x y]
   (when (> y 0)
@@ -33,3 +33,6 @@
 
 (mevent/on-press m (fn [x y] (delegate-on-press m x y)) "*")
 (mevent/on-release m (fn [x y] (delegate-on-release m x y)) "*")
+
+(bass)
+(kill bass)
