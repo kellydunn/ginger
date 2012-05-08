@@ -10,6 +10,7 @@
 
 (def current-index (atom 0))
 (def recording-status (atom false))
+(def samples (atom {}))
 
 (defn get-instrument [index]
   (nth instruments index))
@@ -25,14 +26,21 @@
     (mled/led-on m x y)
     (mled/led-off m 7 y)))
 
+(import '(java.io RandomAccessFile))
+
 ;; TODO Refactor
 (defn switch-recording [m x y]
   (swap! recording-status not)
   (when (deref recording-status)
-    (recording-start)
+    (swap! samples assoc :current RandomAccessFile)
+    (recording-start (dissoc (deref samples) :current))
     (mled/led-on m x y))
   (when (not (deref recording-status))
     (recording-stop)
+    (stereo-player
+     (load-sample
+      (dissoc
+       (deref samples) :current)))
     (mled/led-off m x y)))
 
 (defn handle-press-event [m x y]

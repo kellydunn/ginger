@@ -33,3 +33,5 @@
 
 (mevent/on-press m (fn [x y] (delegate-on-press m x y)) "*")
 (mevent/on-release m (fn [x y] (delegate-on-release m x y)) "*")
+
+(stereo-player (load-sample (dissoc (deref controls/samples) :current)))
