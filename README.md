@@ -39,13 +39,12 @@ The current source code assumes that you have a `beep.clj` instrument defined in
 # usage
 
 - boot up swank-server ala slime in an emacs buffer: `M-x clojure-jack-in <RET>`
-- edit the path to your monome's current connection in core.clj
+- in your slime REPL, enter in: `(use 'ginger.core)`
 - start mashing buttons
 
 # TODOs
 
-- map first instrument in `~/.ginger/instruments` to monome
-- allow user to toggle through instruments on the monome
+- allow user to toggle through instruments on the monome (currently you can only toggle through the first two)
 - determine pitch mapping from instruments
 - dynamic home path
 - autoload ttyUSB / configure loading monome
