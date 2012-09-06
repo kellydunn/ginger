@@ -3,9 +3,11 @@
   (gen-class))
 
 ;; TODO make load path configurable
-(def directory (clojure.java.io/file "/home/kelly/.ginger/instruments"))
+(def directory (clojure.java.io/file "/home/kelly/.ginger/instruments/"))
 
 (def files (file-seq directory))
+
+(dissoc files)
 
 (def instrument-files
   (filter
@@ -16,3 +18,5 @@
   (for [^java.io.File instrument-file instrument-files]
     (load-file
      (.getAbsolutePath instrument-file))))
+
+(dissoc instrument-files)

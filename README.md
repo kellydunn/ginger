@@ -14,6 +14,8 @@
 
 A monome synthesizer using overtone + the clojure monome-serial library.
 
+It also aims to double as a DAW-agnostic OSC-powered synthesizer (currently works renoise)
+
 # why
 
 I want to be able to download overtone instruments and apply them directly to my monome / have the ability to change them on the fly.
@@ -43,9 +45,6 @@ The current source code assumes that you have a `beep.clj` instrument defined in
 - start mashing buttons
 
 # TODOs
-
-- map first instrument in `~/.ginger/instruments` to monome
-- allow user to toggle through instruments on the monome
 - determine pitch mapping from instruments
 - dynamic home path
 - autoload ttyUSB / configure loading monome

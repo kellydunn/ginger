@@ -32,15 +32,10 @@
 (defn switch-recording [m x y]
   (swap! recording-status not)
   (when (deref recording-status)
-    (swap! samples assoc :current RandomAccessFile)
-    (recording-start (dissoc (deref samples) :current))
+    (recording-start)
     (mled/led-on m x y))
   (when (not (deref recording-status))
     (recording-stop)
-    (stereo-player
-     (load-sample
-      (dissoc
-       (deref samples) :current)))
     (mled/led-off m x y)))
 
 (defn handle-press-event [m x y]
